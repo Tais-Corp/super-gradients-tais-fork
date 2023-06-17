@@ -36,5 +36,10 @@ class EnvironmentVariables:
     def CONSOLE_LOG_LEVEL(self) -> str:
         return os.getenv("CONSOLE_LOG_LEVEL", default="INFO").upper()
 
+    # Custom log path
+    @property
+    def CUSTOM_LOG_PATH(self) -> str:
+        return os.getenv("CUSTOM_LOG_PATH", default='~/sg_logs')
+
 
 env_variables = EnvironmentVariables()

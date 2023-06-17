@@ -31,8 +31,9 @@ class AutoLoggerConfig:
         # on Windows platform. In both these cases a multiple processes will be spawned and multiple logs may be created.
         # Therefore the log file will have the parent PID to being able to discriminate the logs corresponding to a single run.
         timestamp = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())
+        logging.log(msg=f'SG CUSTOM PATH: {env_variables.CUSTOM_LOG_PATH}', level=logging.INFO)
         self._setup_logging(
-            filename=os.path.expanduser(f"~/sg_logs/logs_{os.getppid()}_{timestamp}.log"),
+            filename=os.path.expanduser(f"{env_variables.CUSTOM_LOG_PATH}/logs_{os.getppid()}_{timestamp}.log"),
             copy_already_logged_messages=False,
             filemode="w",
             log_level=log_level,
